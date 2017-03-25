@@ -31,12 +31,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -59,6 +62,7 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 
 	public final static String		ACTION_CMD_SAVE						= "Save";
 	public final static String		ACTION_CMD_SAVE_AS					= "Save As";
+	public final static String		ACTION_CMD_SAVE_SQL					= "Save SQL file";
 	public final static String		ACTION_CMD_OPEN_ETL_SPECS			= "Open ETL Specs";
 	public final static String		ACTION_CMD_OPEN_SCAN_REPORT			= "Open Scan Report";
 	public final static String		ACTION_CMD_GENERATE_ETL_DOCUMENT	= "Generate ETL Document";
@@ -85,6 +89,7 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 	private final static FileFilter	FILE_FILTER_CSV						= new FileNameExtensionFilter("Text Files (*.csv)", "csv");
 	private final static FileFilter	FILE_FILTER_R						= new FileNameExtensionFilter("R script (*.r)", "r");
 	private final static FileFilter	FILE_FILTER_XLSX					= new FileNameExtensionFilter("XLSX files (*.xlsx)", "xlsx");
+	private final static FileFilter FILE_FILTER_SQL						= new FileNameExtensionFilter("SQL files (*.sql)", "sql");
 
 	private JFrame					frame;
 	private JScrollPane				scrollPane1;
@@ -217,6 +222,11 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 		saveAsItem.addActionListener(this);
 		saveAsItem.setActionCommand(ACTION_CMD_SAVE_AS);
 		fileMenu.add(saveAsItem);
+		
+		JMenuItem saveSQLItem = new JMenuItem(ACTION_CMD_SAVE_SQL);
+		saveSQLItem.addActionListener(this);
+		saveSQLItem.setActionCommand(ACTION_CMD_SAVE_SQL);
+		fileMenu.add(saveSQLItem);
 
 		JMenuItem generateDocItem = new JMenuItem(ACTION_CMD_GENERATE_ETL_DOCUMENT);
 		generateDocItem.addActionListener(this);
@@ -365,6 +375,8 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 			path += ".json.gz";
 		if (path != null && fileFilter[0] == FILE_FILTER_DOCX && !path.toLowerCase().endsWith(".docx"))
 			path += ".docx";
+		if (path != null && fileFilter[0] == FILE_FILTER_SQL && !path.toLowerCase().endsWith(".sql"))
+			path += ".sql";
 		return path;
 	}
 
@@ -381,6 +393,16 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 				break;
 			case ACTION_CMD_SAVE_AS:
 				doSave(chooseSavePath(FILE_FILTER_GZ, FILE_FILTER_JSON));
+				break;
+			case ACTION_CMD_SAVE_SQL:
+				//TODO finish it
+				filename = ObjectExchange.etl.getFilename();
+			try {
+				doSaveSQL((filename == null || !filename.toLowerCase().endsWith(".sql")) ? chooseSavePath(FILE_FILTER_SQL) : filename);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				break;
 			case ACTION_CMD_OPEN_ETL_SPECS:
 				doOpenSpecs(chooseOpenPath(FILE_FILTER_GZ, FILE_FILTER_JSON));
@@ -549,6 +571,18 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Invalid File Format", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+			frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		}
+	}
+	
+	private void doSaveSQL (String filename) throws FileNotFoundException {
+		//TODO
+		if (filename != null) {
+			frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+			ETL.FileFormat fileFormat = ETL.FileFormat.SQL;
+			PrintWriter writer = new PrintWriter(filename);
+			writer.write(ETLSQLGenerator.getCreateTable());
+			writer.close();
 			frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		}
 	}

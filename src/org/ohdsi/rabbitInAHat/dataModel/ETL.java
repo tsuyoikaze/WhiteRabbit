@@ -36,7 +36,7 @@ import com.cedarsoftware.util.io.JsonWriter;
 
 public class ETL implements Serializable {
 	public enum FileFormat {
-		Binary, Json, GzipJson
+		Binary, Json, GzipJson, SQL
 	}
 
 	private Database								sourceDb					= new Database();
