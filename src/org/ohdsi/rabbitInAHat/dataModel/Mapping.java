@@ -103,4 +103,24 @@ public class Mapping<T extends MappableItem> {
 		}
 		return null;
 	}
+	
+	public List<MappableItem> getSourceItemsFromTarget (MappableItem item) {
+		List<MappableItem> list = new ArrayList<>();
+		
+		
+		if (!cdmItems.contains(item)) {
+			return list;
+		}
+		else {
+			Iterator<ItemToItemMap> iterator = sourceToCdmMaps.iterator();
+			while (iterator.hasNext()) {
+				ItemToItemMap map = iterator.next();
+				if (map.getTargetItem().equals(item)) {
+					list.add(map.getSourceItem());
+				}
+			}
+		}
+		
+		return list;
+	}
 }
