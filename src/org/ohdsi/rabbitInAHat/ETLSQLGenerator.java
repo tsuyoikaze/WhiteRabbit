@@ -50,36 +50,26 @@ public class ETLSQLGenerator {
 		String result = "";
 		Mapping<Table> tableMap = ObjectExchange.etl.getTableToTableMapping();
 		List<MappableItem> list = tableMap.getTargetItems();
-		for (MappableItem item : list) {
+		for (MappableItem targetTable : list) {
 			
-			List<MappableItem> sourceList = tableMap.getSourceItemsFromTarget(item);
+			List<MappableItem> sourceList = tableMap.getSourceItemsFromTarget(targetTable);
 			
 			
-			for (MappableItem source : sourceList) {
-				Mapping<Field> fieldMapping = ObjectExchange.etl.getFieldToFieldMapping((Table) source, (Table) item);
+			for (MappableItem sourceTable : sourceList) {
+				Mapping<Field> fieldMapping = ObjectExchange.etl.getFieldToFieldMapping((Table) sourceTable, (Table) targetTable);
 				
-				List<Field> fields = castToTable(item).getFields();
+				List<Field> fields = castToTable(targetTable).getFields();
 				
 				for (Field targetField : fields) {
 					List<MappableItem> sourceFields = fieldMapping.getSourceItemsFromTarget(targetField);
-					for (int i = 0; i < sourceFields.size(); i++) {
-						Field sourceField = castToField(sourceFields.get(i));
-					}
 					
+					Field initialSourceField = castToField(sourceFields.get(0));
+					result += "INSERT INTO " + targetTable.getName() + " (" + targetField.getName() + ")\n";
+					result += "SELECT " + initialSourceField.getName() + " AS " + targetField.getName() + "\n";
+					result += "FROM " + initialSourceField.getTable().getName() + ";\n\n";
 				}
 			}
 			
-			for (MappableItem source : sourceList) {
-				Mapping<Field> fieldMapping = ObjectExchange.etl.getFieldToFieldMapping((Table) source, (Table) item);
-				
-				List<ItemToItemMap> fieldItemMapping = fieldMapping.getSourceToTargetMaps();
-				
-				for (ItemToItemMap mapItem : fieldItemMapping) {
-					if (castToField(mapItem.getSourceItem()).getType().equals(castToField(mapItem.getTargetItem()).getType())) {
-						result += "INSERT INTO ";
-					}
-				}
-			}
 		}
 		return result;
 	}

@@ -580,6 +580,7 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 		if (filename != null) {
 			frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			ETL.FileFormat fileFormat = ETL.FileFormat.SQL;
+			ETLSQLGenerator.getMap();
 			PrintWriter writer = new PrintWriter(filename);
 			writer.write(ETLSQLGenerator.getCreateTable());
 			writer.close();
