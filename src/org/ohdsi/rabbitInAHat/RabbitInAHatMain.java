@@ -53,6 +53,8 @@ import org.ohdsi.rabbitInAHat.dataModel.Field;
 import org.ohdsi.rabbitInAHat.dataModel.MappableItem;
 import org.ohdsi.rabbitInAHat.dataModel.StemTableAdd;
 import org.ohdsi.rabbitInAHat.dataModel.Table;
+import org.ohdsi.utilities.exception.DuplicateTargetException;
+import org.ohdsi.utilities.exception.TypeMismatchException;
 import org.ohdsi.whiteRabbit.ObjectExchange;
 
 /**
@@ -580,9 +582,31 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 		if (filename != null) {
 			frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			ETL.FileFormat fileFormat = ETL.FileFormat.SQL;
-			ETLSQLGenerator.getMap();
+			
+			String comment = null;
+			String createTable = null;
+			String mapString = null;
+			
+			try {
+				comment = ETLSQLGenerator.HEADER_COMMENT;
+				createTable = ETLSQLGenerator.getCreateTable();
+				mapString = ETLSQLGenerator.getMap();
+			}
+			catch (TypeMismatchException e) {
+				JOptionPane.showMessageDialog(null, "The data types in current mapping does not match. Please only match fields with the same data type.", "Error", JOptionPane.ERROR_MESSAGE);
+				frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				return;
+			}
+			catch (DuplicateTargetException e) {
+				JOptionPane.showMessageDialog(null, "At least one target field is associated with multiple source fields. Please remove extra mappings and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+				frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				return;
+			}
+			
 			PrintWriter writer = new PrintWriter(filename);
-			writer.write(ETLSQLGenerator.getCreateTable());
+			writer.write(comment);
+			writer.write(createTable);
+			writer.write(mapString);
 			writer.close();
 			frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		}

@@ -25,6 +25,7 @@ public class Field implements MappableItem {
 	private String				comment				= "";
 	private String[][]			valueCounts;
 	private boolean				isNullable;
+	private boolean				isUnique;
 	private String				type;
 	private String				description			= "";
 	private int					maxLength;
@@ -77,6 +78,14 @@ public class Field implements MappableItem {
 
 	public void setNullable(boolean isNullable) {
 		this.isNullable = isNullable;
+	}
+	
+	public boolean isUnique() {
+		return isUnique;
+	}
+	
+	public void setUnique(boolean isUnique) {
+		this.isUnique = isUnique;
 	}
 
 	public String getType() {
