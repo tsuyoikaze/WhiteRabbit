@@ -51,7 +51,7 @@ public class ETLSQLGenerator {
 				Field f = fields.get(i);
 				result += "\t" + f.getName() + " " + convertDataType(f.getType(), DataTypeFormat.MySQL) + " " + (f.isNullable() ? "NULL" : "NOT NULL") + (i == fields.size() - 1 ? "" : ",") + "\n";
 			}
-			result += ")\n\n";
+			result += ");\n\n";
 		}
 		
 		return result;
