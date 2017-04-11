@@ -291,7 +291,7 @@ public class DetailsPanel extends JPanel implements DetailsListener {
 			fieldTable.clear();			
 			
 			for (Field field : table.getFields()){
-				fieldTable.add(field.outputName(), field.getType(),field.getDescription());
+				fieldTable.add(field.outputName(), field.getType().toString(),field.getDescription());
 			}
 			
 			commentsArea.setText(table.getComment());
@@ -378,7 +378,7 @@ public class DetailsPanel extends JPanel implements DetailsListener {
 			this.field = field;
 			
 			nameLabel.setText(field.getName());
-			rowCountLabel.setText(field.getType());
+			rowCountLabel.setText(field.getType().toString());
 			description.setText(field.getDescription());
 			
 			// Hide description if it's empty

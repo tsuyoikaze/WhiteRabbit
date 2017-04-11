@@ -34,7 +34,7 @@ public class StemTableAdd {
 					sourceStemTable.setName(row.get("TABLE_NAME").toLowerCase());
 				Field field = new Field(row.get("COLUMN_NAME").toLowerCase(), sourceStemTable);
 				field.setNullable(row.get("IS_NULLABLE").equals("YES"));
-				field.setType(row.get("DATA_TYPE"));
+				field.setType(DataType.fromString(row.get("DATA_TYPE")));
 				field.setDescription(row.get("DESCRIPTION"));
 				field.setStem(true);
 				sourceStemTable.getFields().add(field);

@@ -146,7 +146,7 @@ public class FakeDataGenerator {
 		sql.append("CREATE TABLE " + table.getName() + " (\n");
 		for (int i = 0; i < table.getFields().size(); i++) {
 			Field field = table.getFields().get(i);
-			sql.append("  " + field.getName() + " " + field.getType().toUpperCase());
+			sql.append("  " + field.getName() + " " + field.getType().toString().toUpperCase());
 			if (i < table.getFields().size() - 1)
 				sql.append(",\n");
 		}
@@ -221,7 +221,7 @@ public class FakeDataGenerator {
 
 		public ValueGenerator(Field field) {
 			String[][] valueCounts = field.getValueCounts();
-			type = field.getType();
+			type = field.getType().toString();
 			if (valueCounts[0][0].equals("List truncated...")) {
 				Set<String> values = primaryKeyToValues.get(field.getName());
 				if (values.size() != 0) {

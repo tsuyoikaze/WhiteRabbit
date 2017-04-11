@@ -92,7 +92,7 @@ public class Database implements Serializable {
 				Field field = new Field(row.get("COLUMN_NAME").toLowerCase(), table);
 				field.setNullable(row.get("IS_NULLABLE").equals("YES"));
 				field.setUnique(row.get("UNIQUE").equals("YES"));
-				field.setType(row.get("DATA_TYPE"));
+				field.setType(DataType.fromString(row.get("DATA_TYPE")));
 				field.setDescription(row.get("DESCRIPTION"));
 				table.getFields().add(field);
 			}
@@ -135,7 +135,8 @@ public class Database implements Serializable {
 
 				index = fieldName2ColumnIndex.get("Type");
 				if (index != null && index < row.size())
-					field.setType(row.get(index));
+					System.err.println("Loading: " + row.get(index));
+					field.setType(DataType.fromString(row.get(index)));
 
 				index = fieldName2ColumnIndex.get("Max length");
 				if (index != null && index >= 0 && index < row.size())

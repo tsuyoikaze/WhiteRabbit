@@ -26,7 +26,7 @@ public class Field implements MappableItem {
 	private String[][]			valueCounts;
 	private boolean				isNullable;
 	private boolean				isUnique;
-	private String				type;
+	private DataType			type;
 	private String				description			= "";
 	private int					maxLength;
 	private boolean				isStem;
@@ -88,11 +88,11 @@ public class Field implements MappableItem {
 		this.isUnique = isUnique;
 	}
 
-	public String getType() {
+	public DataType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(DataType type) {
 		this.type = type;
 	}
 

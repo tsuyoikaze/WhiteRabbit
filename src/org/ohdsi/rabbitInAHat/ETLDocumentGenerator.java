@@ -92,7 +92,7 @@ public class ETLDocumentGenerator {
 			for (Field sourceField : sourceTable.getFields()) {
 				XWPFTableRow row = table.getRow(rowNr++);
 				row.getCell(0).setText(sourceField.getName());
-				row.getCell(1).setText(sourceField.getType());
+				row.getCell(1).setText(sourceField.getType().toString());
 				if (sourceField.getValueCounts() != null && sourceField.getValueCounts().length != 0)
 					row.getCell(2).setText(sourceField.getValueCounts()[0][0]);
 				createCellParagraph(row.getCell(3), sourceField.getComment().trim());
