@@ -122,7 +122,7 @@ public class ETLSQLGenerator {
 					Field sourceField = castToField(sourceFields.get(0));
 					result += "UPDATE\n\t" + targetTable.getName() + "\n";
 					result += "INNER JOIN " + sourceTable.getName() + " ON " + sourceTable.getName() + "." + initialSourceField.getName() + "=" + targetTable.getName() + "." + initialTargetField.getName() + "\n";
-					result += "SET " + targetTable.getName() + "." + targetField.getName() + "=" + sourceTable.getName() + "." + sourceField.getName() + ";\n\n";
+					result += "SET " + targetTable.getName() + "." + targetField.getName() + "=" + convertType(sourceTable.getName() + "." + sourceField.getName(), sourceField.getType(), targetField.getType()) + ";\n\n";
 				}
 			}
 			
