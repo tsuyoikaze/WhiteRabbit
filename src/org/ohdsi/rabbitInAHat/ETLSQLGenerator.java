@@ -139,7 +139,7 @@ public class ETLSQLGenerator {
 		}
 	}
 	
-	private static Table castToTable (MappableItem item) {
+	static Table castToTable (MappableItem item) {
 		if (item instanceof Table) {
 			return (Table) item;
 		}

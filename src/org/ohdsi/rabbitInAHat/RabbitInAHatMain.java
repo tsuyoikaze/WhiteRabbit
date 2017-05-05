@@ -50,7 +50,9 @@ import org.ohdsi.rabbitInAHat.dataModel.Database;
 import org.ohdsi.rabbitInAHat.dataModel.Database.CDMVersion;
 import org.ohdsi.rabbitInAHat.dataModel.ETL;
 import org.ohdsi.rabbitInAHat.dataModel.Field;
+import org.ohdsi.rabbitInAHat.dataModel.ItemToItemMap;
 import org.ohdsi.rabbitInAHat.dataModel.MappableItem;
+import org.ohdsi.rabbitInAHat.dataModel.Mapping;
 import org.ohdsi.rabbitInAHat.dataModel.StemTableAdd;
 import org.ohdsi.rabbitInAHat.dataModel.Table;
 import org.ohdsi.utilities.exception.DuplicateTargetException;
@@ -586,6 +588,46 @@ public class RabbitInAHatMain implements ResizeListener, ActionListener {
 			String comment = null;
 			String createTable = null;
 			String mapString = null;
+			
+			boolean needConcept = false;
+			List<Field> conceptList = new ArrayList<>();
+			
+			Mapping<Table> tableMap = ObjectExchange.etl.getTableToTableMapping();
+			List<MappableItem> list = tableMap.getTargetItems();
+			for (MappableItem targetTable : list) {
+				
+				List<MappableItem> sourceList = tableMap.getSourceItemsFromTarget(targetTable);
+				
+				
+				for (MappableItem sourceTable : sourceList) {	
+					List<Field> fields = ETLSQLGenerator.castToTable(targetTable).getFields();
+
+					for (Field targetField : fields) {
+						if (targetField.getName().toLowerCase().contains("concept")) {
+							needConcept = true;
+							conceptList.add(targetField);
+						}
+					}
+				}
+				
+			}
+			
+			if (needConcept) {
+				final JFrame parent = new JFrame();
+		        JButton button = new JButton();
+
+		        parent.add(button);
+		        parent.pack();
+		        parent.setVisible(true);
+
+		        button.addActionListener(new java.awt.event.ActionListener() {
+		            @Override
+		            public void actionPerformed(java.awt.event.ActionEvent evt) {
+		                String name = JOptionPane.showInputDialog(parent,
+		                        "What is your name?", null);
+		            }
+		        });
+			}
 			
 			try {
 				comment = ETLSQLGenerator.HEADER_COMMENT;
