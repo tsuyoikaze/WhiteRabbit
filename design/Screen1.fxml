@@ -18,7 +18,7 @@
                   <Image url="@课表.jpg" />
                </image>
             </ImageView>
-            <VBox layoutX="103.0" layoutY="59.0" maxHeight="139.0" maxWidth="200.0" prefHeight="139.0" prefWidth="189.0" translateX="-50.0" translateY="40.0">
+            <VBox layoutX="103.0" layoutY="59.0" maxHeight="139.0" maxWidth="200.0" prefHeight="139.0" prefWidth="189.0" translateX="-55.0" translateY="40.0">
                <children>
                   <Button mnemonicParsing="false" text="New From Database" />
                   <Button mnemonicParsing="false" text="New From Scanned Excel" />
