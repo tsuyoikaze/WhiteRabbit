@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #999999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -21,9 +22,18 @@
             </ImageView>
             <VBox alignment="CENTER_LEFT" layoutX="87.0" layoutY="27.0" maxHeight="139.0" maxWidth="200.0" prefHeight="119.0" prefWidth="189.0" translateX="-55.0" translateY="40.0">
                <children>
-                  <Button mnemonicParsing="false" text="New From Database" />
-                  <Button mnemonicParsing="false" text="New From Scanned Excel" />
-                  <Button mnemonicParsing="false" text="Opening Existing ETL" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: white;" text="New From Database">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: white;" text="New From Scanned Excel">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: white;" text="Opening Existing ETL">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font></Button>
                </children>
                <padding>
                   <Insets left="20.0" right="20.0" />

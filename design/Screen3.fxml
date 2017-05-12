@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgrey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane disable="true" focusTraversable="true" layoutX="93.0" layoutY="38.0" prefHeight="337.0" prefWidth="414.0" style="-fx-background-color: ivory;">
+         <children>
+            <ProgressBar prefHeight="70.0" prefWidth="414.0" progress="0.3" />
+            <Line endX="100.0" layoutX="600.0" layoutY="69.0" startX="-310.0" strokeWidth="2.0" translateX="-290.0" />
+            <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Create Connection" translateY="5.0" wrappingWidth="115.03515625">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Database Mapping" translateX="-5.0" wrappingWidth="179.0419921875">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="336.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.Done" translateX="-5.0" translateY="-5.0">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <Pane layoutX="52.0" layoutY="92.0" prefHeight="213.0" prefWidth="306.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="39.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanning Complete" wrappingWidth="228.00000023841858">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#4a4a4f" layoutX="15.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The listed conversion requests concept IO. Query them now?" wrappingWidth="275.001953125">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="61.0" layoutY="174.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: white;" text="OK">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="175.0" layoutY="174.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Cancel">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TableView layoutX="33.0" layoutY="82.0" prefHeight="86.0" prefWidth="228.0" style="-fx-background-color: ivory;">
+                    <columns>
+                      <TableColumn prefWidth="115.0" style="-fx-background-color: ivory;" text="Source" />
+                      <TableColumn prefWidth="112.0" style="-fx-background-color: ivory;" text="Target" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
