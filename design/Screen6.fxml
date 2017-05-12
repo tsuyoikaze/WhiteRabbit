@@ -38,17 +38,17 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fill="#4a4a4f" layoutX="15.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The listed conversion requests concept IO. Query them now?" wrappingWidth="275.001953125">
+                  <Text fill="#4a4a4f" layoutX="15.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The following cannot be found in the database" wrappingWidth="275.001953125">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Button layoutX="61.0" layoutY="174.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: white;" text="OK">
+                  <Button layoutX="61.0" layoutY="174.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: white;" text="Next">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="175.0" layoutY="174.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Cancel">
+                  <Button layoutX="175.0" layoutY="174.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Previous">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
