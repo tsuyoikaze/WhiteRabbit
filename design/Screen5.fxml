@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import com.gluonhq.charm.glisten.control.ProgressBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkgrey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -32,56 +31,52 @@
             </Text>
             <Pane layoutX="52.0" layoutY="92.0" prefHeight="213.0" prefWidth="306.0" style="-fx-background-color: white;">
                <children>
-                  <Text layoutX="53.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Need to Scan Database" wrappingWidth="228.00000023841858">
+                  <Text layoutX="39.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanning Database" wrappingWidth="228.00000023841858">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="25.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="7.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
+                  <Text layoutX="166.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="93.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="201.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XXX:XXX">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="42.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scanning">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="143.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="../XX/XX">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ProgressBar layoutX="20.0" layoutY="122.0" prefHeight="27.0" prefWidth="260.0" progress="0.0" />
+                  <Button layoutX="62.0" layoutY="161.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: white;" text="OK">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
-                  </Text>
-                  <DropdownButton layoutX="51.0" layoutY="60.0" prefHeight="17.0" prefWidth="69.0">
-                      <items>
-                          <MenuItem fx:id="choice1" text="Choice 1" />
-                          <MenuItem text="Choice 2" />
-                          <MenuItem text="Choice 3" />
-                      </items>
-                      <selectedItem>
-                          <fx:reference source="choice1" />
-                      </selectedItem>
-                  </DropdownButton>
-                  <Text layoutX="5.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DBName:">
+                  </Button>
+                  <Button layoutX="172.0" layoutY="161.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Cancel">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
-                  </Text>
-                  <TextField layoutX="5.0" layoutY="111.0" prefHeight="27.0" prefWidth="130.0" />
-                  <Text layoutX="42.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP:">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <TextField layoutX="78.0" layoutY="158.0" prefHeight="27.0" prefWidth="97.0" />
-                  <Text layoutX="186.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <TextField layoutX="202.0" layoutY="158.0" prefHeight="27.0" prefWidth="60.0" />
-                  <Text layoutX="116.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <TextField layoutX="191.0" layoutY="57.0" prefHeight="27.0" prefWidth="82.0" />
-                  <Text layoutX="138.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <TextField layoutX="138.0" layoutY="111.0" />
+                  </Button>
                </children>
             </Pane>
          </children>
